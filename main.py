@@ -1,3 +1,8 @@
+'''
+Elizarev Yaroslav -
+Leonov Kirill - 50
+'''
+
 import turtle as t
 t.speed(10)
 
@@ -139,6 +144,27 @@ def main_ice_fractal_two():
     order = int(input('Введите глубину рекурсии: '))
     length = int(input('Введите размер кривой: '))
     ice_fractal_two(order, length)
+    t.done()
+
+
+def levy_curve(order, length):
+    if order == 0:
+        t.fd(length)
+    else:
+        t.lt(45)
+        levy_curve(order - 1, length / 2)
+        t.rt(90)
+        levy_curve(order - 1, length / 2)
+        t.lt(45)
+
+
+def main_levy_curve():
+    t.up()
+    t.goto(-200, 0)
+    t.down()
+    order = int(input('Введите глубину рекурсии: '))
+    length = int(input('Введите размер кривой: '))
+    levy_curve(order, length)
     t.done()
 
 #Branch fractal
