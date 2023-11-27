@@ -1,4 +1,5 @@
 import turtle as t
+t.speed(10)
 
 
 # Running square
@@ -88,4 +89,54 @@ def koch_snowflake():
     t.rt(120)
     koch_curve(depth, size)
     t.rt(120)
+    t.done()
+
+
+def ice_fractal_one(order, length):
+    if order == 0:
+        t.fd(length)
+    else:
+        ice_fractal_one(order - 1, length / 2)
+        t.lt(90)
+        ice_fractal_one(order - 1, length / 4)
+        t.lt(180)
+        ice_fractal_one(order - 1, length / 4)
+        t.lt(90)
+        ice_fractal_one(order - 1, length / 2)
+
+
+def main_ice_fractal_one():
+    t.up()
+    t.goto(-200, 0)
+    t.down()
+    order = int(input('Введите глубину рекурсии: '))
+    length = int(input('Введите размер кривой: '))
+    ice_fractal_one(order, length)
+    t.done()
+
+
+def ice_fractal_two(order, length):
+    if order == 0:
+        t.fd(length)
+    else:
+        ice_fractal_two(order - 1, length / 2)
+        t.lt(120)
+        ice_fractal_two(order - 1, length / 4)
+        t.lt(180)
+        ice_fractal_two(order - 1, length / 4)
+        t.lt(120)
+        ice_fractal_two(order - 1, length / 4)
+        t.lt(180)
+        ice_fractal_two(order - 1, length / 4)
+        t.lt(120)
+        ice_fractal_two(order - 1, length / 2)
+
+
+def main_ice_fractal_two():
+    t.up()
+    t.goto(-200, 0)
+    t.down()
+    order = int(input('Введите глубину рекурсии: '))
+    length = int(input('Введите размер кривой: '))
+    ice_fractal_two(order, length)
     t.done()
