@@ -167,6 +167,35 @@ def main_levy_curve():
     levy_curve(order, length)
     t.done()
 
+
+# Leonov's fractal
+def my_fractal(order, length):
+    if order == 0:
+        t.fd(length)
+    else:
+        my_fractal(order - 1, length / 3)
+        t.lt(90)
+        my_fractal(order - 1, length / 3)
+        t.rt(90)
+        my_fractal(order - 1, length / 3)
+        t.rt(90)
+        my_fractal(order - 1, length / 3)
+        t.lt(90)
+        my_fractal(order - 1, length / 3)
+
+
+def main_my_fractal():
+    t.up()
+    t.goto(-200, 0)
+    t.down()
+    order = int(input('Введите глубину рекурсии: '))
+    length = int(input('Введите размер кривой: '))
+    my_fractal(order, length)
+    t.lt(180)
+    my_fractal(order, length)
+    t.done()
+
+
 #Branch fractal
 def branch(n, size):
     if n == 0:
