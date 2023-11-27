@@ -47,17 +47,6 @@ def binary_tree(depth, size, angle):
         t.backward(size)
 
 
-def main_branch():
-    t.up()
-    t.lt(90)
-    t.goto(-100, 0)
-    t.down()
-    depth = int(input('Введите высоту дерева'))
-    angle = int(input('Введите величину угла между ветками: '))
-    binary_tree(depth, 100, angle)
-    t.done()
-
-
 # Koch curve
 def koch_curve(depth, size):
     if depth == 0:
@@ -196,7 +185,7 @@ def main_my_fractal():
     t.done()
 
 
-#Branch fractal
+# Branch fractal
 def branch(n, size):
     if n == 0:
         t.left(180)
@@ -216,39 +205,41 @@ def branch(n, size):
     t.left(180)
     t.forward(size)
 
+
 def main_branch():
-  n = int(input('Введите глубину рекурсии: '))
-  size = int(input('Введите размер ветки: '))
-  t.up()
-  t.goto(-100, 0)
-  t.down()
-  t.left(90)
-  branch(n, size)
-  t.done()
+    n = int(input('Введите глубину рекурсии: '))
+    size = int(input('Введите размер ветки: '))
+    t.up()
+    t.goto(-100, 0)
+    t.down()
+    t.left(90)
+    branch(n, size)
+    t.done()
 
-#Minkovsiy curve
 
+# Minkovsiy curve
 def minkovskiy_curve(depth, size):
-  t.speed(100)
-  if depth == 0:
-    t.forward(size)
-    return
+    t.speed(100)
+    if depth == 0:
+        t.forward(size)
+        return
     
-  else:
-    minkovskiy_curve(depth-1, size*0.5)
-    t.lt(90)
-    minkovskiy_curve(depth-1, size*0.5)
-    t.rt(90)
-    minkovskiy_curve(depth-1, size*0.5)
-    t.rt(90)
-    minkovskiy_curve(depth-1, size*0.5)
-    minkovskiy_curve(depth-1, size*0.5)
-    t.lt(90)
-    minkovskiy_curve(depth-1, size*0.5)
-    t.lt(90)
-    minkovskiy_curve(depth-1, size*0.5)
-    t.rt(90)
-    minkovskiy_curve(depth-1, size*0.5)
+    else:
+        minkovskiy_curve(depth-1, size*0.5)
+        t.lt(90)
+        minkovskiy_curve(depth-1, size*0.5)
+        t.rt(90)
+        minkovskiy_curve(depth-1, size*0.5)
+        t.rt(90)
+        minkovskiy_curve(depth-1, size*0.5)
+        minkovskiy_curve(depth-1, size*0.5)
+        t.lt(90)
+        minkovskiy_curve(depth-1, size*0.5)
+        t.lt(90)
+        minkovskiy_curve(depth-1, size*0.5)
+        t.rt(90)
+        minkovskiy_curve(depth-1, size*0.5)
+
 
 def main_minkovskiy_curve():
     size = int(input('Введите размер кривой'))
@@ -259,26 +250,27 @@ def main_minkovskiy_curve():
     minkovskiy_curve(depth, size)
     t.done()
 
-#Yaroslav's fractal
 
-def Elizarev_curve(depth, size):
+# Yaroslav's fractal
+def elizarev_curve(depth, size):
     if depth == 0:
         t.fd(size)
     else:
         t.lt(60)
-        Elizarev_curve(depth-1, size*0.5)
+        elizarev_curve(depth-1, size*0.5)
         t.rt(120)
-        Elizarev_curve(depth-1, size*0.5)
+        elizarev_curve(depth-1, size*0.5)
         t.lt(60)
-        Elizarev_curve(depth-1, size*0.5)
+        elizarev_curve(depth-1, size*0.5)
         t.lt(60)
-        Elizarev_curve(depth-1, size*0.5)
+        elizarev_curve(depth-1, size*0.5)
         t.rt(120)
-        Elizarev_curve(depth-1, size*0.5)
+        elizarev_curve(depth-1, size*0.5)
         t.lt(60)
+
 
 t.up()
 t.goto(-300, 0)
 t.down()
-Elizarev_curve(2, 200)
+elizarev_curve(2, 200)
 t.done()
