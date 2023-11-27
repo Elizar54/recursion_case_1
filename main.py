@@ -140,3 +140,90 @@ def main_ice_fractal_two():
     length = int(input('Введите размер кривой: '))
     ice_fractal_two(order, length)
     t.done()
+
+#Branch fractal
+def branch(n, size):
+    if n == 0:
+        t.left(180)
+        return
+
+    x = size/(n+1)
+    
+    for i in range(n):
+        t.forward(x)
+        t.left(45)
+        branch(n-i-1, 0.5*x*(n-i-1))
+        t.left(90)
+        branch(n-i-1, 0.5*x*(n-i-1))
+        t.right(135)
+
+    t.forward(x)
+    t.left(180)
+    t.forward(size)
+
+def main_branch():
+  n = int(input('Введите глубину рекурсии: '))
+  size = int(input('Введите размер ветки: '))
+  t.up()
+  t.goto(-100, 0)
+  t.down()
+  t.left(90)
+  branch(n, size)
+  t.done()
+
+#Minkovsiy curve
+
+def minkovskiy_curve(depth, size):
+  t.speed(100)
+  if depth == 0:
+    t.forward(size)
+    return
+    
+  else:
+    minkovskiy_curve(depth-1, size*0.5)
+    t.lt(90)
+    minkovskiy_curve(depth-1, size*0.5)
+    t.rt(90)
+    minkovskiy_curve(depth-1, size*0.5)
+    t.rt(90)
+    minkovskiy_curve(depth-1, size*0.5)
+    minkovskiy_curve(depth-1, size*0.5)
+    t.lt(90)
+    minkovskiy_curve(depth-1, size*0.5)
+    t.lt(90)
+    minkovskiy_curve(depth-1, size*0.5)
+    t.rt(90)
+    minkovskiy_curve(depth-1, size*0.5)
+
+def main_minkovskiy_curve():
+    size = int(input('Введите размер кривой'))
+    depth = int(input('Введите глубину рекурссии: '))
+    t.up()
+    t.goto(-500, 0)
+    t.down()
+    minkovskiy_curve(depth, size)
+    t.done()
+
+#Yaroslav's fractal
+
+def Elizarev_curve(depth, size):
+    if depth == 0:
+        t.fd(size)
+    else:
+        t.lt(60)
+        Elizarev_curve(depth-1, size*0.5)
+        t.rt(120)
+        Elizarev_curve(depth-1, size*0.5)
+        t.lt(60)
+        Elizarev_curve(depth-1, size*0.5)
+        t.lt(60)
+        Elizarev_curve(depth-1, size*0.5)
+        t.rt(120)
+        Elizarev_curve(depth-1, size*0.5)
+        t.lt(60)
+
+t.up()
+t.goto(-300, 0)
+t.down()
+Elizarev_curve(2, 200)
+t.done()
