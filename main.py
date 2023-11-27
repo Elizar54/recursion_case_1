@@ -1,3 +1,9 @@
+'''
+Elizarev Yaroslav -
+Leonov Kirill - 50
+'''
+
+
 import turtle as t
 t.speed(10)
 
