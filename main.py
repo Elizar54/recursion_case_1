@@ -1,6 +1,6 @@
 '''
 Elizarev Yaroslav - 80
-Leonov Kirill - 50
+Leonov Kirill - 75
 '''
 
 import turtle as t
